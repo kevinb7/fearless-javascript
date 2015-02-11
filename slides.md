@@ -1,45 +1,102 @@
-title: YYCjs Slides
+title: Fearless JavaScript
 output: index.html
 theme: theme
 controls: false
 logo: theme/logo.png
 
---
+-- title
 
-# YYC.js Presents:
-
-## An Epic Slide Template
-
-### That totally kicks some ass
-
-#### Kind of like Chuck Norris
-
-##### And Jackie Chan
-
-Maybe even Chris Rock
-
---
-
-# Brought to you by
+# Fearless JavaScript
 
 -- presenter
 
-![David Luecke](http://gravatar.com/avatar/a14850281f19396480bdba4aab2d52ef?s=200)
+![Kevin Barabash](http://www.gravatar.com/avatar/de8cd250d9fe39b78f1c0f98b718670d.png?s=200)
 
-## David Luecke
+## Kevin Barabash
 
-* [<i class="fa fa-github"></i> daffl](https://github.com/daffl)
-* [<i class="fa fa-twitter"></i> @daffl](http://twitter.com/daffl)
+* [<i class="fa fa-github"></i> kevinb7](https://github.com/kevinb7)
 
--- presenter
+--
 
-![Eric Kryski](http://gravatar.com/avatar/23aba778a7daae99348aeb0728cf4aec?s=200)
+# Agenda
 
-## Eric Kryski
+- JavaScript
+- Browser APIs
+- Interacting with the Community
 
-* [<i class="fa fa-github"></i> ekryski](https://github.com/ekryski)
-* [<i class="fa fa-twitter"></i> @ekryski](http://twitter.com/ekryski)
-* [<i class="fa fa-home"></i> erickryski.com](http://erickryski.com)
+--
+
+# JavaScript
+
+Language, Standard Library, DOM, jQuery, Backbone, etc.
+
+--
+
+# Learn the Language First
+
+- this
+- closure
+- prototype chain
+- function scope
+- type coercion
+- automatic semicolon insertion
+
+--
+
+# Really Learn the Language
+
+- JavaScript Koans
+- use a REPL to validate understanding
+
+--
+
+# Protect Yourself
+
+- lint: jshint
+- write tests, automate tests
+
+--
+
+# Browser APIs
+
+- dive into HTML5
+- http://html5please.com/
+- Blobs, BlobURLs, native drag and drop, native notifications, dialog element,
+  web workers, WebGL, SVG, Canvas, localStorage, audio/video elements, 
+  getUserMedia, Touch, 
+
+--
+
+# Using the new and shiny
+
+- caniuse.com
+- find polyfills
+
+
+--
+
+# Libraries
+
+- websockets -> socket.io
+- webRTC -> webrtc.io
+- webGL -> THREE.js
+- 
+
+--
+
+# Interacting with the Community
+
+- github
+- gh-pages
+
+--
+
+# Finding a Project
+
+--
+
+# Starting your Project
+
 
 -- sponsors
 

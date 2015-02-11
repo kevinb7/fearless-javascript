@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>YYCjs Slides</title>
+  <title>Fearless JavaScript</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,900,700,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="theme/font-awesome.css">
   <style type="text/css">
@@ -405,6 +405,7 @@ body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 100;
   color: #333333;
+  background: #FFFFFF;
 }
 
 h1 {
@@ -425,6 +426,14 @@ h3 {
 
 p {
   font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, p, ul {
+  margin: 10px 0;
+}
+
+ul {
+  padding: 20px 0 20px 60px;
 }
 
 .progress-bar {
@@ -471,6 +480,16 @@ p {
   padding: 30px;
 }
 
+.title .slide-content {
+  display: table;
+}
+
+.title h1 {
+  display: table-cell; 
+  vertical-align: middle;
+  z-index: 10;
+}
+
 .presenter img {
   height: 200px;
   width: 200px;
@@ -506,6 +525,10 @@ p {
   padding: 0 10px;
 }
 
+.sponsors h1 {
+  margin: 20px 0 40px 0;
+}
+
 .sponsors p {
   float: left;
   text-align: center;
@@ -517,6 +540,13 @@ p {
   width: 100%;
   max-width: 240px;
 }
+
+.image p > img {
+  max-width: 600px;
+  max-height: 400px;
+  margin: 20px auto;
+  display: table-cell;
+}
   </style>
 </head>
 <body>
@@ -524,39 +554,106 @@ p {
     <div class="progress-bar"></div>
   </div>
 
-  <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="yyc-js-presents-">YYC.js Presents:</h1>
-<h2 id="an-epic-slide-template">An Epic Slide Template</h2>
-<h3 id="that-totally-kicks-some-ass">That totally kicks some ass</h3>
-<h4 id="kind-of-like-chuck-norris">Kind of like Chuck Norris</h4>
-<h5 id="and-jackie-chan">And Jackie Chan</h5>
-<p>Maybe even Chris Rock</p>
+  <div class="slide  title" id="slide-1">
+    <section class="slide-content"><h1 id="fearless-javascript">Fearless JavaScript</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="brought-to-you-by">Brought to you by</h1>
-</section>
-  </div>
-  <div class="slide hidden  presenter" id="slide-3">
-    <section class="slide-content"><p><img src="http://gravatar.com/avatar/a14850281f19396480bdba4aab2d52ef?s=200" alt="David Luecke"></p>
-<h2 id="david-luecke">David Luecke</h2>
+  <div class="slide hidden  presenter" id="slide-2">
+    <section class="slide-content"><p><img src="http://www.gravatar.com/avatar/de8cd250d9fe39b78f1c0f98b718670d.png?s=200" alt="Kevin Barabash"></p>
+<h2 id="kevin-barabash">Kevin Barabash</h2>
 <ul>
-<li><a href="https://github.com/daffl"><i class="fa fa-github"></i> daffl</a></li>
-<li><a href="http://twitter.com/daffl"><i class="fa fa-twitter"></i> @daffl</a></li>
+<li><a href="https://github.com/kevinb7"><i class="fa fa-github"></i> kevinb7</a></li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  presenter" id="slide-4">
-    <section class="slide-content"><p><img src="http://gravatar.com/avatar/23aba778a7daae99348aeb0728cf4aec?s=200" alt="Eric Kryski"></p>
-<h2 id="eric-kryski">Eric Kryski</h2>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><h1 id="agenda">Agenda</h1>
 <ul>
-<li><a href="https://github.com/ekryski"><i class="fa fa-github"></i> ekryski</a></li>
-<li><a href="http://twitter.com/ekryski"><i class="fa fa-twitter"></i> @ekryski</a></li>
-<li><a href="http://erickryski.com"><i class="fa fa-home"></i> erickryski.com</a></li>
+<li>JavaScript</li>
+<li>Browser APIs</li>
+<li>Interacting with the Community</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  sponsors" id="slide-5">
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h1 id="javascript">JavaScript</h1>
+<p>Language, Standard Library, DOM, jQuery, Backbone, etc.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h1 id="learn-the-language-first">Learn the Language First</h1>
+<ul>
+<li>this</li>
+<li>closure</li>
+<li>prototype chain</li>
+<li>function scope</li>
+<li>type coercion</li>
+<li>automatic semicolon insertion</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h1 id="really-learn-the-language">Really Learn the Language</h1>
+<ul>
+<li>JavaScript Koans</li>
+<li>use a REPL to validate understanding</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h1 id="protect-yourself">Protect Yourself</h1>
+<ul>
+<li>lint: jshint</li>
+<li>write tests, automate tests</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h1 id="browser-apis">Browser APIs</h1>
+<ul>
+<li>dive into HTML5</li>
+<li><a href="http://html5please.com/">http://html5please.com/</a></li>
+<li>Blobs, BlobURLs, native drag and drop, native notifications, dialog element,
+web workers, WebGL, SVG, Canvas, localStorage, audio/video elements, 
+getUserMedia, Touch,</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h1 id="using-the-new-and-shiny">Using the new and shiny</h1>
+<ul>
+<li>caniuse.com</li>
+<li>find polyfills</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h1 id="libraries">Libraries</h1>
+<ul>
+<li>websockets -&gt; socket.io</li>
+<li>webRTC -&gt; webrtc.io</li>
+<li>webGL -&gt; THREE.js
+-</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h1 id="interacting-with-the-community">Interacting with the Community</h1>
+<ul>
+<li>github</li>
+<li>gh-pages</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h1 id="finding-a-project">Finding a Project</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h1 id="starting-your-project">Starting your Project</h1>
+</section>
+  </div>
+  <div class="slide hidden  sponsors" id="slide-14">
     <section class="slide-content"><h1 id="our-sponsors">Our Sponsors</h1>
 <p><img src="img/sponsors/assembly_logo.png" alt="Assembly"></p>
 <p><img src="img/sponsors/village_brewery_logo.png" alt="Village Brewery"></p>
@@ -564,7 +661,7 @@ p {
 <p><img src="img/sponsors/petrofeed_logo.png" alt="PetroFeed"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-6">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h1 id="last-month">Last Month</h1>
 <ul>
 <li>Something awesome</li>
@@ -572,7 +669,7 @@ p {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h1 id="next-month">Next Month</h1>
 <ul>
 <li>Something awesome</li>
@@ -582,7 +679,6 @@ p {
   </div>
 
 
-  <img src="theme&#x2F;logo.png" alt="YYC.js logo" class="logo">
   <script type="text/javascript">
     /**
  * Returns the current page number of the presentation.
