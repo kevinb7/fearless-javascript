@@ -585,6 +585,7 @@ ul {
 <ul>
 <li>this</li>
 <li>closure</li>
+<li>pass-by-reference vs. pass-by-value</li>
 <li>prototype chain</li>
 <li>function scope</li>
 <li>type coercion</li>
@@ -593,6 +594,163 @@ ul {
 </section>
   </div>
   <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
+<pre><code>function Foo() {
+    console.log(&quot;this == &quot; + this);
+}
+
+Foo();      // this == [window]
+new Foo();  // this == [instance of Foo]</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
+<pre><code>Foo.prototype.bar = function() {
+    console.log(&quot;this == &quot; + this);
+}
+
+var foo = new Foo();
+foo.bar();          // this == foo
+
+var bar = foo.bar;
+bar();              // this == window/global</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
+<pre><code>var foo = {
+    bar: function() {
+        console.log(&quot;this == &quot; + this);
+    }
+}
+
+foo.bar();          // this == foo
+
+var bar = foo.bar;
+bar();              // this == window/global</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
+<pre><code>function FooBar() {}
+var foobar = new FooBar();
+
+foo.bar();            // this == foo
+
+foobar.bar = foo.bar;
+foobar.bar()          // this == foobar</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h1 id="bound-vs-not-bound">Bound vs. not bound</h1>
+<ul>
+<li>new -&gt; bound</li>
+<li>calling a method via dot syntax -&gt; bound</li>
+<li>explicitly binding &quot;this&quot; via .bind -&gt; bound</li>
+<li>explicity setting &quot;this&quot; via .call or .apply</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h1 id="-bind">.bind</h1>
+<pre><code>var foo = new Foo();
+var bar = foo.bar;
+var boundBar = bar.bind(foo);
+
+bar();              // this == window/global
+boundBar();         // this == foo</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h1 id="-call-apply">.call &amp; .apply</h1>
+<pre><code>Foo.prototype.bar = function(x,y) { return x + y };
+var bar = foo.bar;
+
+bar(5, 10);              // this == [window] w/ args 5, 10
+bar.call(foo, 5, 10);    // this == foo w/ args 5, 10
+bar.apply(foo, [5, 10]); // this == foo w/ args 5, 10</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h1 id="-bind-w-args">.bind /w args</h1>
+<pre><code>Foo.prototype.bar = function(x,y) { return x + y };
+var bar = foo.bar;
+var boundBar = bar.bind(foo);
+var boundBarAndArgs = bar.bind(foo, 20, 30);
+
+boundBar(5, 10);          // same as foo.bar(5, 10);
+boundBarAndArgs();        // same as foo.bar(20, 30);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h1 id="closure">Closure</h1>
+<pre><code>var x = 5;
+
+var foo() {
+    x++;
+    console.log(x);
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h1 id="closure">Closure</h1>
+<pre><code>for (var i = 0; i &lt; 5; i++) {
+    button.onclick = function() {
+        alert(&quot;I&#39;m button #&quot; + i);
+    }
+}</code></pre>
+<p>The onclick handler uses whatever the value of <code>i</code> when the event handler is 
+called.  When is it called?  What is the value of <code>i</code> at that point in time?
+What does this program do?</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><h1 id="closure">Closure</h1>
+<pre><code>var createHandler = function(i) {
+    alert(&quot;I&#39;m button #&quot; + i);
+};
+
+for (var i = 0; i &lt; 5; i++) {
+    button.onclick = createHandler(i);
+}</code></pre>
+<p>Why does this make a difference?</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h1 id="closure">Closure</h1>
+<pre><code>  var createCounter = function() {
+      var i = 0;
+      var counter = function() {
+          return i++;
+      }
+      return counter;
+  }
+
+  var c = createCounter();
+  console.log(c());   // 0
+  console.log(c());   // 1
+  console.log(c());   // 2</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><h1 id="closure">Closure</h1>
+<pre><code>var createCounter = function() {
+    var i = 0;
+    var counter = function() {
+        return i++;
+    }
+    return counter;
+}
+
+var c1 = createCounter();
+var c2 = createCounter();
+console.log(c1());   // 0
+console.log(c1());   // 1
+console.log(c1());   // 2
+console.log(c2());   // 0</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h1 id="really-learn-the-language">Really Learn the Language</h1>
 <ul>
 <li>JavaScript Koans</li>
@@ -600,15 +758,17 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h1 id="protect-yourself">Protect Yourself</h1>
 <ul>
 <li>lint: jshint</li>
 <li>write tests, automate tests</li>
+<li>source control: git, hg, svn, etc.</li>
+<li>externalize storage: github, bitbucket</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h1 id="browser-apis">Browser APIs</h1>
 <ul>
 <li>dive into HTML5</li>
@@ -619,7 +779,7 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h1 id="using-the-new-and-shiny">Using the new and shiny</h1>
 <ul>
 <li>caniuse.com</li>
@@ -627,7 +787,7 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h1 id="libraries">Libraries</h1>
 <ul>
 <li>websockets -&gt; socket.io</li>
@@ -637,7 +797,7 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-24">
     <section class="slide-content"><h1 id="interacting-with-the-community">Interacting with the Community</h1>
 <ul>
 <li>github</li>
@@ -645,15 +805,15 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h1 id="finding-a-project">Finding a Project</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
+  <div class="slide hidden" id="slide-26">
     <section class="slide-content"><h1 id="starting-your-project">Starting your Project</h1>
 </section>
   </div>
-  <div class="slide hidden  sponsors" id="slide-14">
+  <div class="slide hidden  sponsors" id="slide-27">
     <section class="slide-content"><h1 id="our-sponsors">Our Sponsors</h1>
 <p><img src="img/sponsors/assembly_logo.png" alt="Assembly"></p>
 <p><img src="img/sponsors/village_brewery_logo.png" alt="Village Brewery"></p>
@@ -661,7 +821,7 @@ getUserMedia, Touch,</li>
 <p><img src="img/sponsors/petrofeed_logo.png" alt="PetroFeed"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-28">
     <section class="slide-content"><h1 id="last-month">Last Month</h1>
 <ul>
 <li>Something awesome</li>
@@ -669,7 +829,7 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-29">
     <section class="slide-content"><h1 id="next-month">Next Month</h1>
 <ul>
 <li>Something awesome</li>
