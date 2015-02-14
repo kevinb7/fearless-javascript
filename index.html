@@ -594,117 +594,85 @@ ul {
 </section>
   </div>
   <div class="slide hidden" id="slide-6">
-    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
-<pre><code>function Foo() {
-    console.log(&quot;this == &quot; + this);
-}
-
-Foo();      // this == [window]
-new Foo();  // this == [instance of Foo]</code></pre>
+    <section class="slide-content"><h1 id="lots-of-resources">Lots of Resources</h1>
+<ul>
+<li>Crockford&#39;s &quot;Good Parts&quot; talks</li>
+<li><a href="https://bonsaiden.github.io/JavaScript-Garden/">JavaScript Garden</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript on MDN</a></li>
+<li><a href="https://www.youtube.com/watch?v=MihuqHhnFVo">JavaScript the Weird Parts</a></li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
-<pre><code>Foo.prototype.bar = function() {
-    console.log(&quot;this == &quot; + this);
-}
-
-var foo = new Foo();
-foo.bar();          // this == foo
-
-var bar = foo.bar;
-bar();              // this == window/global</code></pre>
+    <section class="slide-content"><h1 id="how-to-make-it-stick">How to make it stick</h1>
+<ul>
+<li>Don&#39;t just read it, try it out as you read it.  </li>
+<li>If you forget it, try to remember it by creating an example to verify it.<ul>
+<li>e.g. what is the value of &quot;this&quot; is a particular situation?</li>
+</ul>
+</li>
+<li>once you get good it&#39;s faster that look up docs, but it&#39;s also more likely
+to stick because you&#39;re an active participant</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
-<pre><code>var foo = {
-    bar: function() {
-        console.log(&quot;this == &quot; + this);
-    }
-}
-
-foo.bar();          // this == foo
-
-var bar = foo.bar;
-bar();              // this == window/global</code></pre>
+    <section class="slide-content"><h1 id="verifying-behaviour-in-a-repl">Verifying behaviour in a REPL</h1>
+<ul>
+<li>create a minimal example and execute</li>
+<li>be careful, browser dev tools will eat &quot;var a = ...&quot;, use &quot;a = ...&quot;</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="what-s-the-value-of-this-">What&#39;s the value of &quot;this&quot;?</h1>
-<pre><code>function FooBar() {}
-var foobar = new FooBar();
-
-foo.bar();            // this == foo
-
-foobar.bar = foo.bar;
-foobar.bar()          // this == foobar</code></pre>
+    <section class="slide-content"><h1 id="example-value-of-this-">Example (value of &quot;this&quot;)</h1>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
-    <section class="slide-content"><h1 id="bound-vs-not-bound">Bound vs. not bound</h1>
+    <section class="slide-content"><h1 id="simplifying-mental-models">Simplifying Mental Models</h1>
 <ul>
-<li>new -&gt; bound</li>
-<li>calling a method via dot syntax -&gt; bound</li>
-<li>explicitly binding &quot;this&quot; via .bind -&gt; bound</li>
-<li>explicity setting &quot;this&quot; via .call or .apply</li>
+<li>long blog post enumerate every single way in which &quot;this&quot; can be used (bad)</li>
+<li>bounds vs. unbound (good)</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-11">
-    <section class="slide-content"><h1 id="-bind">.bind</h1>
-<pre><code>var foo = new Foo();
-var bar = foo.bar;
-var boundBar = bar.bind(foo);
-
-bar();              // this == window/global
-boundBar();         // this == foo</code></pre>
+    <section class="slide-content"><h1 id="bound-vs-unbound">Bound vs. unbound</h1>
+<ul>
+<li>new -&gt; bound</li>
+<li>calling a method via dot syntax -&gt; bound</li>
+<li>binding a &quot;this&quot; object via .bind -&gt; bound</li>
+<li>using .call or .apply with a &quot;this&quot; object -&gt; bound</li>
+</ul>
+<p>Everything else is unbound and &quot;this&quot; will be window (or global in node.js)</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-12">
-    <section class="slide-content"><h1 id="-call-apply">.call &amp; .apply</h1>
-<pre><code>Foo.prototype.bar = function(x,y) { return x + y };
-var bar = foo.bar;
-
-bar(5, 10);              // this == [window] w/ args 5, 10
-bar.call(foo, 5, 10);    // this == foo w/ args 5, 10
-bar.apply(foo, [5, 10]); // this == foo w/ args 5, 10</code></pre>
+    <section class="slide-content"><h1 id="example-bind-call-apply">Example: bind, call, apply</h1>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">call</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a></li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-13">
-    <section class="slide-content"><h1 id="-bind-w-args">.bind /w args</h1>
-<pre><code>Foo.prototype.bar = function(x,y) { return x + y };
-var bar = foo.bar;
-var boundBar = bar.bind(foo);
-var boundBarAndArgs = bar.bind(foo, 20, 30);
-
-boundBar(5, 10);          // same as foo.bar(5, 10);
-boundBarAndArgs();        // same as foo.bar(20, 30);</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-14">
-    <section class="slide-content"><h1 id="closure">Closure</h1>
-<pre><code>var x = 5;
-
-var foo() {
-    x++;
-    console.log(x);
-}</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h1 id="closure">Closure</h1>
 <pre><code>for (var i = 0; i &lt; 5; i++) {
     button.onclick = function() {
         alert(&quot;I&#39;m button #&quot; + i);
     }
 }</code></pre>
-<p>The onclick handler uses whatever the value of <code>i</code> when the event handler is 
-called.  When is it called?  What is the value of <code>i</code> at that point in time?
-What does this program do?</p>
+<ul>
+<li>The onclick handler uses whatever the value of <code>i</code> when the event handler is 
+called.  </li>
+<li>When is onclick called?  During the <code>for</code> loop or after?</li>
+<li>What is the value of <code>i</code> at that point in time?</li>
+<li>What does this program do?</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h1 id="closure">Closure</h1>
 <pre><code>var createHandler = function(i) {
     alert(&quot;I&#39;m button #&quot; + i);
@@ -716,52 +684,58 @@ for (var i = 0; i &lt; 5; i++) {
 <p>Why does this make a difference?</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
-    <section class="slide-content"><h1 id="closure">Closure</h1>
-<pre><code>  var createCounter = function() {
-      var i = 0;
-      var counter = function() {
-          return i++;
-      }
-      return counter;
-  }
-
-  var c = createCounter();
-  console.log(c());   // 0
-  console.log(c());   // 1
-  console.log(c());   // 2</code></pre>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h1 id="example-exploring-prototype">Example: exploring prototype</h1>
+<p>Let&#39;s look at how to add a method to <code>Array</code></p>
+<ul>
+<li>Object.getPrototype</li>
+<li>Object.getOwnPropertyDescriptor</li>
+<li>Object.setPrototype</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
-    <section class="slide-content"><h1 id="closure">Closure</h1>
-<pre><code>var createCounter = function() {
-    var i = 0;
-    var counter = function() {
-        return i++;
-    }
-    return counter;
-}
-
-var c1 = createCounter();
-var c2 = createCounter();
-console.log(c1());   // 0
-console.log(c1());   // 1
-console.log(c1());   // 2
-console.log(c2());   // 0</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h1 id="really-learn-the-language">Really Learn the Language</h1>
 <ul>
 <li>JavaScript Koans</li>
-<li>use a REPL to validate understanding</li>
+<li>use the REPL (luke)</li>
+<li>write code</li>
+<li>read other people&#39;s code</li>
+<li>modify other people&#39;s code</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h1 id="repl">REPL</h1>
+<ul>
+<li>validate understanding</li>
+<li>explore objects</li>
+<li>experiment</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><h1 id="replacing-methods">Replacing methods</h1>
+<ul>
+<li>polyfills (add mising functionality)</li>
+<li>instrument</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-19">
+    <section class="slide-content"><h1 id="example-instrumenting-addeventlistener-">Example (instrumenting addEventListener)</h1>
+<p>instrument a single instance, class, or everythhing</p>
+<p>pattern:</p>
+<ul>
+<li>store the original implementation</li>
+<li>create our own method that calls the original and does some other worker</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h1 id="protect-yourself">Protect Yourself</h1>
 <ul>
-<li>lint: jshint</li>
+<li>lint: jshint (automate it)</li>
 <li>write tests, automate tests</li>
 <li>source control: git, hg, svn, etc.</li>
 <li>externalize storage: github, bitbucket</li>
@@ -790,30 +764,75 @@ getUserMedia, Touch,</li>
   <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h1 id="libraries">Libraries</h1>
 <ul>
-<li>websockets -&gt; socket.io</li>
-<li>webRTC -&gt; webrtc.io</li>
-<li>webGL -&gt; THREE.js
--</li>
+<li>Web Sockets -&gt; socket.io</li>
+<li>WebRTC -&gt; webrtc.io</li>
+<li>WebGL -&gt; THREE.js</li>
+<li>Web Components -&gt; Polymer</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-24">
-    <section class="slide-content"><h1 id="interacting-with-the-community">Interacting with the Community</h1>
+    <section class="slide-content"><h1 id="interacting-with-the-community-github-">Interacting with the Community (github)</h1>
 <ul>
-<li>github</li>
-<li>gh-pages</li>
+<li>report bugs</li>
+<li>verify bugs</li>
+<li>suggest features</li>
+<li>fix documentation</li>
+<li>fix bugs (and write tests)</li>
+<li>add features</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-25">
-    <section class="slide-content"><h1 id="finding-a-project">Finding a Project</h1>
+    <section class="slide-content"><h1 id="interacting-with-the-community">Interacting with the Community</h1>
+<ul>
+<li>assume good faith
+-</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-26">
-    <section class="slide-content"><h1 id="starting-your-project">Starting your Project</h1>
+    <section class="slide-content"><h1 id="finding-a-project-glsl-js-">Finding a Project (glsl.js)</h1>
+<p><a href="https://github.com/gre/glsl.js/pull/12">https://github.com/gre/glsl.js/pull/12</a></p>
 </section>
   </div>
-  <div class="slide hidden  sponsors" id="slide-27">
+  <div class="slide hidden" id="slide-27">
+    <section class="slide-content"><h1 id="starting-a-project">Starting a Project</h1>
+<ul>
+<li><a href="http://jenniferdewalt.com/">http://jenniferdewalt.com/</a></li>
+<li>write some functions to make something easier -&gt; library<ul>
+<li>generating random colors</li>
+<li>drawing circles and lines using HTML5 Canvas</li>
+<li>something to make postMessage look like an EventEmitter</li>
+</ul>
+</li>
+<li>add documentation and example code to README.md</li>
+<li>put a live demo on gh-pages (free static hosting)</li>
+<li>write a &quot;Show HN&quot; post</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-28">
+    <section class="slide-content"><h1 id="tooling">Tooling</h1>
+<ul>
+<li>IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.</li>
+<li>dependency management: npm, bower, jspm</li>
+<li>module loading: requirejs, systemjs</li>
+<li>build system: grunt, gulp, browserify, webpack, etc.</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-29">
+    <section class="slide-content"><h1 id="ide-editor">IDE/Editor</h1>
+<ul>
+<li>easy navigation</li>
+<li>collapsable regions -&gt; structure</li>
+<li>refactorings</li>
+<li>multiple cursors</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  sponsors" id="slide-30">
     <section class="slide-content"><h1 id="our-sponsors">Our Sponsors</h1>
 <p><img src="img/sponsors/assembly_logo.png" alt="Assembly"></p>
 <p><img src="img/sponsors/village_brewery_logo.png" alt="Village Brewery"></p>
@@ -821,7 +840,7 @@ getUserMedia, Touch,</li>
 <p><img src="img/sponsors/petrofeed_logo.png" alt="PetroFeed"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-28">
+  <div class="slide hidden" id="slide-31">
     <section class="slide-content"><h1 id="last-month">Last Month</h1>
 <ul>
 <li>Something awesome</li>
@@ -829,7 +848,7 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-29">
+  <div class="slide hidden" id="slide-32">
     <section class="slide-content"><h1 id="next-month">Next Month</h1>
 <ul>
 <li>Something awesome</li>

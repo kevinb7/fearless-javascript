@@ -44,110 +44,60 @@ Language, Standard Library, DOM, jQuery, Backbone, etc.
 
 --
 
-# What's the value of "this"?
+# Lots of Resources
 
-    function Foo() {
-        console.log("this == " + this);
-    }
-  
-    Foo();      // this == [window]
-    new Foo();  // this == [instance of Foo]
+- Crockford's "Good Parts" talks
+- [JavaScript Garden](https://bonsaiden.github.io/JavaScript-Garden/)
+- [JavaScript on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [JavaScript the Weird Parts](https://www.youtube.com/watch?v=MihuqHhnFVo)
 
 --
 
-# What's the value of "this"?
+# How to make it stick
 
-    Foo.prototype.bar = function() {
-        console.log("this == " + this);
-    }
-  
-    var foo = new Foo();
-    foo.bar();          // this == foo
-    
-    var bar = foo.bar;
-    bar();              // this == window/global
-  
---
- 
-# What's the value of "this"?
-
-    var foo = {
-        bar: function() {
-            console.log("this == " + this);
-        }
-    }
-    
-    foo.bar();          // this == foo
-    
-    var bar = foo.bar;
-    bar();              // this == window/global
+- Don't just read it, try it out as you read it.  
+- If you forget it, try to remember it by creating an example to verify it.
+  - e.g. what is the value of "this" is a particular situation?
+- once you get good it's faster that look up docs, but it's also more likely
+  to stick because you're an active participant
 
 --
 
-# What's the value of "this"?
+# Verifying behaviour in a REPL
 
-    function FooBar() {}
-    var foobar = new FooBar();
-
-    foo.bar();            // this == foo
-
-    foobar.bar = foo.bar;
-    foobar.bar()          // this == foobar
+- create a minimal example and execute
+- be careful, browser dev tools will eat "var a = ...", use "a = ..."
 
 --
 
-# Bound vs. not bound
+# Example (value of "this")
+
+--
+
+# Simplifying Mental Models
+
+- long blog post enumerate every single way in which "this" can be used (bad)
+- bounds vs. unbound (good)
+
+--
+
+# Bound vs. unbound
 
 - new -> bound
 - calling a method via dot syntax -> bound
-- explicitly binding "this" via .bind -> bound
-- explicity setting "this" via .call or .apply
+- binding a "this" object via .bind -> bound
+- using .call or .apply with a "this" object -> bound
+
+Everything else is unbound and "this" will be window (or global in node.js)
 
 --
 
-# .bind
+# Example: bind, call, apply
 
-    var foo = new Foo();
-    var bar = foo.bar;
-    var boundBar = bar.bind(foo);
-    
-    bar();              // this == window/global
-    boundBar();         // this == foo
+- [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+- [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+- [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
---
-
-# .call & .apply
-
-    Foo.prototype.bar = function(x,y) { return x + y };
-    var bar = foo.bar;
-    
-    bar(5, 10);              // this == [window] w/ args 5, 10
-    bar.call(foo, 5, 10);    // this == foo w/ args 5, 10
-    bar.apply(foo, [5, 10]); // this == foo w/ args 5, 10
-
---
-
-# .bind /w args
-
-    Foo.prototype.bar = function(x,y) { return x + y };
-    var bar = foo.bar;
-    var boundBar = bar.bind(foo);
-    var boundBarAndArgs = bar.bind(foo, 20, 30);
-    
-    boundBar(5, 10);          // same as foo.bar(5, 10);
-    boundBarAndArgs();        // same as foo.bar(20, 30);
-
---
-
-# Closure
-
-    var x = 5;
-    
-    var foo() {
-        x++;
-        console.log(x);
-    }
-    
 --
 
 # Closure
@@ -158,9 +108,11 @@ Language, Standard Library, DOM, jQuery, Backbone, etc.
         }
     }
     
-The onclick handler uses whatever the value of `i` when the event handler is 
-called.  When is it called?  What is the value of `i` at that point in time?
-What does this program do?
+- The onclick handler uses whatever the value of `i` when the event handler is 
+called.  
+- When is onclick called?  During the `for` loop or after?
+- What is the value of `i` at that point in time?
+- What does this program do?
 
 --
 
@@ -178,52 +130,54 @@ Why does this make a difference?
 
 --
 
-# Closure
-  
-      var createCounter = function() {
-          var i = 0;
-          var counter = function() {
-              return i++;
-          }
-          return counter;
-      }
-      
-      var c = createCounter();
-      console.log(c());   // 0
-      console.log(c());   // 1
-      console.log(c());   // 2
-  
---
+# Example: exploring prototype
 
-# Closure
+Let's look at how to add a method to `Array`
 
-    var createCounter = function() {
-        var i = 0;
-        var counter = function() {
-            return i++;
-        }
-        return counter;
-    }
-    
-    var c1 = createCounter();
-    var c2 = createCounter();
-    console.log(c1());   // 0
-    console.log(c1());   // 1
-    console.log(c1());   // 2
-    console.log(c2());   // 0
+- Object.getPrototype
+- Object.getOwnPropertyDescriptor
+- Object.setPrototype
 
 --
 
 # Really Learn the Language
 
 - JavaScript Koans
-- use a REPL to validate understanding
+- use the REPL (luke)
+- write code
+- read other people's code
+- modify other people's code
+
+--
+
+# REPL
+
+- validate understanding
+- explore objects
+- experiment
+
+--
+
+# Replacing methods
+
+- polyfills (add mising functionality)
+- instrument
+
+-- 
+
+# Example (instrumenting addEventListener)
+
+instrument a single instance, class, or everythhing
+
+pattern:
+- store the original implementation
+- create our own method that calls the original and does some other worker
 
 --
 
 # Protect Yourself
 
-- lint: jshint
+- lint: jshint (automate it)
 - write tests, automate tests
 - source control: git, hg, svn, etc.
 - externalize storage: github, bitbucket
@@ -249,26 +203,65 @@ Why does this make a difference?
 
 # Libraries
 
-- websockets -> socket.io
-- webRTC -> webrtc.io
-- webGL -> THREE.js
-- 
+- Web Sockets -> socket.io
+- WebRTC -> webrtc.io
+- WebGL -> THREE.js
+- Web Components -> Polymer
+
+--
+
+# Interacting with the Community (github)
+
+- report bugs
+- verify bugs
+- suggest features
+- fix documentation
+- fix bugs (and write tests)
+- add features
 
 --
 
 # Interacting with the Community
 
-- github
-- gh-pages
+- assume good faith
+- 
 
 --
 
-# Finding a Project
+# Finding a Project (glsl.js)
+
+https://github.com/gre/glsl.js/pull/12
 
 --
 
-# Starting your Project
+# Starting a Project
 
+- http://jenniferdewalt.com/
+- write some functions to make something easier -> library
+  - generating random colors
+  - drawing circles and lines using HTML5 Canvas
+  - something to make postMessage look like an EventEmitter
+- add documentation and example code to README.md
+- put a live demo on gh-pages (free static hosting)
+- write a "Show HN" post
+
+--
+
+# Tooling
+
+- IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.
+- dependency management: npm, bower, jspm
+- module loading: requirejs, systemjs
+- build system: grunt, gulp, browserify, webpack, etc.
+
+-- 
+
+# IDE/Editor
+
+- easy navigation
+- collapsable regions -> structure
+- refactorings
+- multiple cursors
 
 -- sponsors
 
