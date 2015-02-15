@@ -21,6 +21,7 @@ logo: theme/logo.png
 # Agenda
 
 - JavaScript
+- Tools
 - Browser APIs
 - Interacting with the Community
 
@@ -28,7 +29,15 @@ logo: theme/logo.png
 
 # JavaScript
 
-Language, Standard Library, DOM, jQuery, Backbone, etc.
+- Language
+  - keywords: `if`, `for`, `var`, `function`, etc; operators: `+`, `&&`, `===`, `!==`, etc.
+- Standard Library
+  - String, Array, Function, RegExp, Date, Object, Math, setTimeout, clearTimeout, setInterval, clearInterval
+- DOM: document, document.body, elements, addEventListener, etc.
+- 3rd party libraries:
+  - jQuery (DOM manipulation, AJAX, Promises)
+  - Backbone, Angular, Ember, React, etc.
+  - other
 
 --
 
@@ -55,11 +64,21 @@ Language, Standard Library, DOM, jQuery, Backbone, etc.
 
 # How to make it stick
 
-- Don't just read it, try it out as you read it.  
+- Don't just read it, try it out as you read it
+  - JavaScript Koans
 - If you forget it, try to remember it by creating an example to verify it.
-  - e.g. what is the value of "this" is a particular situation?
-- once you get good it's faster that look up docs, but it's also more likely
-  to stick because you're an active participant
+  - use the REPL
+- write code
+- read other people's code
+- modify other people's code
+
+--
+
+# REPL
+
+- validate understanding
+- explore objects
+- experiment
 
 --
 
@@ -67,10 +86,14 @@ Language, Standard Library, DOM, jQuery, Backbone, etc.
 
 - create a minimal example and execute
 - be careful, browser dev tools will eat "var a = ...", use "a = ..."
+- hit shift-enter to type multiple lines of code
 
 --
 
 # Example (value of "this")
+
+- [MDN this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+- [How "this" works (JavaScript Garden)](https://bonsaiden.github.io/JavaScript-Garden/#function.this)
 
 --
 
@@ -140,24 +163,6 @@ Let's look at how to add a method to `Array`
 
 --
 
-# Really Learn the Language
-
-- JavaScript Koans
-- use the REPL (luke)
-- write code
-- read other people's code
-- modify other people's code
-
---
-
-# REPL
-
-- validate understanding
-- explore objects
-- experiment
-
---
-
 # Replacing methods
 
 - polyfills (add mising functionality)
@@ -165,7 +170,7 @@ Let's look at how to add a method to `Array`
 
 -- 
 
-# Example (instrumenting addEventListener)
+# Example (addEventListener)
 
 instrument a single instance, class, or everythhing
 
@@ -175,12 +180,100 @@ pattern:
 
 --
 
+# Example (addEventListener)
+
+    Element.prototype.addEventListener = function(type, handler, capture) {
+        console.log("adding event '" + type + "' to: %o", this);
+        aEL.call(this, type, handler, capture);
+    };
+ 
+-- title
+
+# Tools
+
+--
+
+# Tools
+
+- IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.
+- dependency management: npm, bower, jspm
+- module loading: requirejs, systemjs
+- build system: grunt, gulp, browserify, webpack, etc.
+- Browser Dev Tools: debugging, profiling, etc.
+
+-- 
+
+# IDE/Editor
+
+- easy navigation
+- collapsable regions -> structure
+- refactorings
+- multiple cursors
+
+--
+
 # Protect Yourself
 
 - lint: jshint (automate it)
-- write tests, automate tests
+- write tests, automate tests (travis-ci)
 - source control: git, hg, svn, etc.
 - externalize storage: github, bitbucket
+
+--
+
+# Debugging
+
+- breakpoints
+- exceptions
+- conditional breakpoints
+- https://developer.chrome.com/devtools
+- http://discover-devtools.codeschool.com/
+
+--
+
+# Interacting with the Community (github)
+
+- report bugs
+- verify bugs
+- suggest features
+- fix documentation
+- fix bugs (and write tests)
+- add features
+
+--
+
+# Interacting with the Community
+
+- assume good faith
+- observe proper netiquette
+- try to make your code fit it
+- don't try to change everything
+
+--
+
+# Finding a Project
+
+- https://github.com/gre/glsl.js/pull/12
+- https://github.com/WebAudio/web-audio-api/pull/339
+- https://github.com/Khan/live-editor/pull/188/files
+
+--
+
+# Starting a Project
+
+- http://jenniferdewalt.com/
+- write some functions to make something easier -> library
+  - generate random colors - [npmjs.org search](https://www.npmjs.com/search?q=random+color)
+  - drawing circles and lines using HTML5 Canvas
+  - something to make postMessage look like an EventEmitter - [poster](https://github.com/kevinb7/poster)
+
+--
+
+# Finishing a Project
+
+- add documentation and example code to README.md
+- put a live demo on gh-pages (free static hosting)
+- write a "Show HN" post
 
 --
 
@@ -203,65 +296,10 @@ pattern:
 
 # Libraries
 
-- Web Sockets -> socket.io
-- WebRTC -> webrtc.io
-- WebGL -> THREE.js
-- Web Components -> Polymer
-
---
-
-# Interacting with the Community (github)
-
-- report bugs
-- verify bugs
-- suggest features
-- fix documentation
-- fix bugs (and write tests)
-- add features
-
---
-
-# Interacting with the Community
-
-- assume good faith
-- 
-
---
-
-# Finding a Project (glsl.js)
-
-https://github.com/gre/glsl.js/pull/12
-
---
-
-# Starting a Project
-
-- http://jenniferdewalt.com/
-- write some functions to make something easier -> library
-  - generating random colors
-  - drawing circles and lines using HTML5 Canvas
-  - something to make postMessage look like an EventEmitter
-- add documentation and example code to README.md
-- put a live demo on gh-pages (free static hosting)
-- write a "Show HN" post
-
---
-
-# Tooling
-
-- IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.
-- dependency management: npm, bower, jspm
-- module loading: requirejs, systemjs
-- build system: grunt, gulp, browserify, webpack, etc.
-
--- 
-
-# IDE/Editor
-
-- easy navigation
-- collapsable regions -> structure
-- refactorings
-- multiple cursors
+- Web Sockets -> [socket.io](http://socket.io/)
+- WebRTC -> [rtc.io](http://rtc.io/)
+- WebGL -> [THREE.js](http://threejs.org/)
+- Web Components -> [Polymer](https://www.polymer-project.org/)
 
 -- sponsors
 

@@ -6,6 +6,7 @@
   <title>Fearless JavaScript</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,900,700,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="theme/font-awesome.css">
+  <script src="node_modules/jquery/dist/jquery.js"></script>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -570,6 +571,7 @@ ul {
     <section class="slide-content"><h1 id="agenda">Agenda</h1>
 <ul>
 <li>JavaScript</li>
+<li>Tools</li>
 <li>Browser APIs</li>
 <li>Interacting with the Community</li>
 </ul>
@@ -577,7 +579,23 @@ ul {
   </div>
   <div class="slide hidden" id="slide-4">
     <section class="slide-content"><h1 id="javascript">JavaScript</h1>
-<p>Language, Standard Library, DOM, jQuery, Backbone, etc.</p>
+<ul>
+<li>Language<ul>
+<li>keywords: <code>if</code>, <code>for</code>, <code>var</code>, <code>function</code>, etc; operators: <code>+</code>, <code>&amp;&amp;</code>, <code>===</code>, <code>!==</code>, etc.</li>
+</ul>
+</li>
+<li>Standard Library<ul>
+<li>String, Array, Function, RegExp, Date, Object, Math, setTimeout, clearTimeout, setInterval, clearInterval</li>
+</ul>
+</li>
+<li>DOM: document, document.body, elements, addEventListener, etc.</li>
+<li>3rd party libraries:<ul>
+<li>jQuery (DOM manipulation, AJAX, Promises)</li>
+<li>Backbone, Angular, Ember, React, etc.</li>
+<li>other</li>
+</ul>
+</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-5">
@@ -606,29 +624,47 @@ ul {
   <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h1 id="how-to-make-it-stick">How to make it stick</h1>
 <ul>
-<li>Don&#39;t just read it, try it out as you read it.  </li>
-<li>If you forget it, try to remember it by creating an example to verify it.<ul>
-<li>e.g. what is the value of &quot;this&quot; is a particular situation?</li>
+<li>Don&#39;t just read it, try it out as you read it<ul>
+<li>JavaScript Koans</li>
 </ul>
 </li>
-<li>once you get good it&#39;s faster that look up docs, but it&#39;s also more likely
-to stick because you&#39;re an active participant</li>
+<li>If you forget it, try to remember it by creating an example to verify it.<ul>
+<li>use the REPL</li>
+</ul>
+</li>
+<li>write code</li>
+<li>read other people&#39;s code</li>
+<li>modify other people&#39;s code</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="verifying-behaviour-in-a-repl">Verifying behaviour in a REPL</h1>
+    <section class="slide-content"><h1 id="repl">REPL</h1>
 <ul>
-<li>create a minimal example and execute</li>
-<li>be careful, browser dev tools will eat &quot;var a = ...&quot;, use &quot;a = ...&quot;</li>
+<li>validate understanding</li>
+<li>explore objects</li>
+<li>experiment</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="example-value-of-this-">Example (value of &quot;this&quot;)</h1>
+    <section class="slide-content"><h1 id="verifying-behaviour-in-a-repl">Verifying behaviour in a REPL</h1>
+<ul>
+<li>create a minimal example and execute</li>
+<li>be careful, browser dev tools will eat &quot;var a = ...&quot;, use &quot;a = ...&quot;</li>
+<li>hit shift-enter to type multiple lines of code</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h1 id="example-value-of-this-">Example (value of &quot;this&quot;)</h1>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN this</a></li>
+<li><a href="https://bonsaiden.github.io/JavaScript-Garden/#function.this">How &quot;this&quot; works (JavaScript Garden)</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h1 id="simplifying-mental-models">Simplifying Mental Models</h1>
 <ul>
 <li>long blog post enumerate every single way in which &quot;this&quot; can be used (bad)</li>
@@ -636,7 +672,7 @@ to stick because you&#39;re an active participant</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h1 id="bound-vs-unbound">Bound vs. unbound</h1>
 <ul>
 <li>new -&gt; bound</li>
@@ -647,7 +683,7 @@ to stick because you&#39;re an active participant</li>
 <p>Everything else is unbound and &quot;this&quot; will be window (or global in node.js)</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h1 id="example-bind-call-apply">Example: bind, call, apply</h1>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a></li>
@@ -656,7 +692,7 @@ to stick because you&#39;re an active participant</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h1 id="closure">Closure</h1>
 <pre><code>for (var i = 0; i &lt; 5; i++) {
     button.onclick = function() {
@@ -672,7 +708,7 @@ called.  </li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h1 id="closure">Closure</h1>
 <pre><code>var createHandler = function(i) {
     alert(&quot;I&#39;m button #&quot; + i);
@@ -684,7 +720,7 @@ for (var i = 0; i &lt; 5; i++) {
 <p>Why does this make a difference?</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h1 id="example-exploring-prototype">Example: exploring prototype</h1>
 <p>Let&#39;s look at how to add a method to <code>Array</code></p>
 <ul>
@@ -694,27 +730,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
-    <section class="slide-content"><h1 id="really-learn-the-language">Really Learn the Language</h1>
-<ul>
-<li>JavaScript Koans</li>
-<li>use the REPL (luke)</li>
-<li>write code</li>
-<li>read other people&#39;s code</li>
-<li>modify other people&#39;s code</li>
-</ul>
-</section>
-  </div>
   <div class="slide hidden" id="slide-17">
-    <section class="slide-content"><h1 id="repl">REPL</h1>
-<ul>
-<li>validate understanding</li>
-<li>explore objects</li>
-<li>experiment</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h1 id="replacing-methods">Replacing methods</h1>
 <ul>
 <li>polyfills (add mising functionality)</li>
@@ -722,8 +738,8 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-19">
-    <section class="slide-content"><h1 id="example-instrumenting-addeventlistener-">Example (instrumenting addEventListener)</h1>
+  <div class="slide hidden  " id="slide-18">
+    <section class="slide-content"><h1 id="example-addeventlistener-">Example (addEventListener)</h1>
 <p>instrument a single instance, class, or everythhing</p>
 <p>pattern:</p>
 <ul>
@@ -732,46 +748,60 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-20">
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h1 id="example-addeventlistener-">Example (addEventListener)</h1>
+<pre><code>Element.prototype.addEventListener = function(type, handler, capture) {
+    console.log(&quot;adding event &#39;&quot; + type + &quot;&#39; to: %o&quot;, this);
+    aEL.call(this, type, handler, capture);
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  title" id="slide-20">
+    <section class="slide-content"><h1 id="tools">Tools</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h1 id="tools">Tools</h1>
+<ul>
+<li>IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.</li>
+<li>dependency management: npm, bower, jspm</li>
+<li>module loading: requirejs, systemjs</li>
+<li>build system: grunt, gulp, browserify, webpack, etc.</li>
+<li>Browser Dev Tools: debugging, profiling, etc.</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-22">
+    <section class="slide-content"><h1 id="ide-editor">IDE/Editor</h1>
+<ul>
+<li>easy navigation</li>
+<li>collapsable regions -&gt; structure</li>
+<li>refactorings</li>
+<li>multiple cursors</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h1 id="protect-yourself">Protect Yourself</h1>
 <ul>
 <li>lint: jshint (automate it)</li>
-<li>write tests, automate tests</li>
+<li>write tests, automate tests (travis-ci)</li>
 <li>source control: git, hg, svn, etc.</li>
 <li>externalize storage: github, bitbucket</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
-    <section class="slide-content"><h1 id="browser-apis">Browser APIs</h1>
-<ul>
-<li>dive into HTML5</li>
-<li><a href="http://html5please.com/">http://html5please.com/</a></li>
-<li>Blobs, BlobURLs, native drag and drop, native notifications, dialog element,
-web workers, WebGL, SVG, Canvas, localStorage, audio/video elements, 
-getUserMedia, Touch,</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-22">
-    <section class="slide-content"><h1 id="using-the-new-and-shiny">Using the new and shiny</h1>
-<ul>
-<li>caniuse.com</li>
-<li>find polyfills</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-23">
-    <section class="slide-content"><h1 id="libraries">Libraries</h1>
-<ul>
-<li>Web Sockets -&gt; socket.io</li>
-<li>WebRTC -&gt; webrtc.io</li>
-<li>WebGL -&gt; THREE.js</li>
-<li>Web Components -&gt; Polymer</li>
-</ul>
-</section>
-  </div>
   <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><h1 id="debugging">Debugging</h1>
+<p>// TODO: need an example to debug</p>
+<ul>
+<li>breakpoints</li>
+<li>exceptions</li>
+<li>conditional breakpoints</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h1 id="interacting-with-the-community-github-">Interacting with the Community (github)</h1>
 <ul>
 <li>report bugs</li>
@@ -783,56 +813,77 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-25">
+  <div class="slide hidden" id="slide-26">
     <section class="slide-content"><h1 id="interacting-with-the-community">Interacting with the Community</h1>
 <ul>
-<li>assume good faith
--</li>
+<li>assume good faith</li>
+<li>observe proper netiquette</li>
+<li>try to make your code fit it</li>
+<li>don&#39;t try to change everything</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-26">
-    <section class="slide-content"><h1 id="finding-a-project-glsl-js-">Finding a Project (glsl.js)</h1>
-<p><a href="https://github.com/gre/glsl.js/pull/12">https://github.com/gre/glsl.js/pull/12</a></p>
+  <div class="slide hidden" id="slide-27">
+    <section class="slide-content"><h1 id="finding-a-project">Finding a Project</h1>
+<ul>
+<li><a href="https://github.com/gre/glsl.js/pull/12">https://github.com/gre/glsl.js/pull/12</a></li>
+<li><a href="https://github.com/WebAudio/web-audio-api/pull/339">https://github.com/WebAudio/web-audio-api/pull/339</a></li>
+<li><a href="https://github.com/Khan/live-editor/pull/188/files">https://github.com/Khan/live-editor/pull/188/files</a></li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-27">
+  <div class="slide hidden" id="slide-28">
     <section class="slide-content"><h1 id="starting-a-project">Starting a Project</h1>
 <ul>
 <li><a href="http://jenniferdewalt.com/">http://jenniferdewalt.com/</a></li>
 <li>write some functions to make something easier -&gt; library<ul>
-<li>generating random colors</li>
+<li>generate random colors - <a href="https://www.npmjs.com/search?q=random+color">npmjs.org search</a></li>
 <li>drawing circles and lines using HTML5 Canvas</li>
-<li>something to make postMessage look like an EventEmitter</li>
+<li>something to make postMessage look like an EventEmitter - <a href="https://github.com/kevinb7/poster">poster</a></li>
 </ul>
 </li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-29">
+    <section class="slide-content"><h1 id="finishing-a-project">Finishing a Project</h1>
+<ul>
 <li>add documentation and example code to README.md</li>
 <li>put a live demo on gh-pages (free static hosting)</li>
 <li>write a &quot;Show HN&quot; post</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-28">
-    <section class="slide-content"><h1 id="tooling">Tooling</h1>
+  <div class="slide hidden" id="slide-30">
+    <section class="slide-content"><h1 id="browser-apis">Browser APIs</h1>
 <ul>
-<li>IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.</li>
-<li>dependency management: npm, bower, jspm</li>
-<li>module loading: requirejs, systemjs</li>
-<li>build system: grunt, gulp, browserify, webpack, etc.</li>
+<li>dive into HTML5</li>
+<li><a href="http://html5please.com/">http://html5please.com/</a></li>
+<li>Blobs, BlobURLs, native drag and drop, native notifications, dialog element,
+web workers, WebGL, SVG, Canvas, localStorage, audio/video elements, 
+getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-29">
-    <section class="slide-content"><h1 id="ide-editor">IDE/Editor</h1>
+  <div class="slide hidden" id="slide-31">
+    <section class="slide-content"><h1 id="using-the-new-and-shiny">Using the new and shiny</h1>
 <ul>
-<li>easy navigation</li>
-<li>collapsable regions -&gt; structure</li>
-<li>refactorings</li>
-<li>multiple cursors</li>
+<li>caniuse.com</li>
+<li>find polyfills</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  sponsors" id="slide-30">
+  <div class="slide hidden" id="slide-32">
+    <section class="slide-content"><h1 id="libraries">Libraries</h1>
+<ul>
+<li>Web Sockets -&gt; <a href="http://socket.io/">socket.io</a></li>
+<li>WebRTC -&gt; <a href="http://rtc.io/">rtc.io</a></li>
+<li>WebGL -&gt; <a href="http://threejs.org/">THREE.js</a></li>
+<li>Web Components -&gt; <a href="https://www.polymer-project.org/">Polymer</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  sponsors" id="slide-33">
     <section class="slide-content"><h1 id="our-sponsors">Our Sponsors</h1>
 <p><img src="img/sponsors/assembly_logo.png" alt="Assembly"></p>
 <p><img src="img/sponsors/village_brewery_logo.png" alt="Village Brewery"></p>
@@ -840,7 +891,7 @@ getUserMedia, Touch,</li>
 <p><img src="img/sponsors/petrofeed_logo.png" alt="PetroFeed"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-31">
+  <div class="slide hidden" id="slide-34">
     <section class="slide-content"><h1 id="last-month">Last Month</h1>
 <ul>
 <li>Something awesome</li>
@@ -848,7 +899,7 @@ getUserMedia, Touch,</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-32">
+  <div class="slide hidden" id="slide-35">
     <section class="slide-content"><h1 id="next-month">Next Month</h1>
 <ul>
 <li>Something awesome</li>
