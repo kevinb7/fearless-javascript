@@ -47,7 +47,7 @@ logo: theme/logo.png
 # Learn the Language First
 
 - `this`
-- closure
+- closure (lambdas)
 - pass-by-reference vs. pass-by-value
 - prototype chain
 - function scope
@@ -56,9 +56,14 @@ logo: theme/logo.png
 
 --
 
-# Lots of Resources
+# JavaScript the Good Parts
 
-- [JavaScript the Good Parts](https://www.youtube.com/watch?v=hQVTIJBZook) (Crockford 2009)
+<iframe width="640" height="480" src="https://www.youtube.com/embed/hQVTIJBZook?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+--
+
+# Other Resources
+
 - [JavaScript Garden](https://bonsaiden.github.io/JavaScript-Garden/)
 - [JavaScript on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [JavaScript the Weird Parts](https://www.youtube.com/watch?v=MihuqHhnFVo)

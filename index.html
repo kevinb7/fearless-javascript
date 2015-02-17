@@ -607,7 +607,7 @@ pre > code {
     <section class="slide-content"><h1 id="learn-the-language-first">Learn the Language First</h1>
 <ul>
 <li><code>this</code></li>
-<li>closure</li>
+<li>closure (lambdas)</li>
 <li>pass-by-reference vs. pass-by-value</li>
 <li>prototype chain</li>
 <li>function scope</li>
@@ -617,16 +617,19 @@ pre > code {
 </section>
   </div>
   <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="lots-of-resources">Lots of Resources</h1>
+    <section class="slide-content"><h1 id="javascript-the-good-parts">JavaScript the Good Parts</h1>
+<iframe width="640" height="480" src="https://www.youtube.com/embed/hQVTIJBZook?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h1 id="other-resources">Other Resources</h1>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=hQVTIJBZook">JavaScript the Good Parts</a> (Crockford 2009)</li>
 <li><a href="https://bonsaiden.github.io/JavaScript-Garden/">JavaScript Garden</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript on MDN</a></li>
 <li><a href="https://www.youtube.com/watch?v=MihuqHhnFVo">JavaScript the Weird Parts</a></li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
+  <div class="slide hidden" id="slide-9">
     <section class="slide-content"><h1 id="how-to-make-it-stick">How to make it stick</h1>
 <ul>
 <li>Don&#39;t just read it, try it out as you read it</li>
@@ -637,7 +640,7 @@ pre > code {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
+  <div class="slide hidden" id="slide-10">
     <section class="slide-content"><h1 id="repl-uses">REPL uses</h1>
 <ul>
 <li>validate understanding</li>
@@ -646,7 +649,7 @@ pre > code {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h1 id="repl-tips">REPL tips</h1>
 <ul>
 <li>be careful, browser dev tools will eat &quot;var a = ...&quot;, use &quot;a = ...&quot;</li>
@@ -654,7 +657,7 @@ pre > code {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h1 id="example-value-of-this-">Example (value of &quot;this&quot;)</h1>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN this</a></li>
@@ -662,7 +665,7 @@ pre > code {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h1 id="simplifying-mental-models">Simplifying Mental Models</h1>
 <ul>
 <li>long blog post enumerate every single way in which &quot;this&quot; can be used (bad)</li>
@@ -670,7 +673,7 @@ pre > code {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h1 id="bound-vs-unbound">Bound vs. unbound</h1>
 <ul>
 <li>new -&gt; bound</li>
@@ -681,7 +684,7 @@ pre > code {
 <p>Everything else is unbound and &quot;this&quot; will be window (or global in node.js)</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h1 id="example-bind-call-apply">Example: bind, call, apply</h1>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a></li>
@@ -690,7 +693,7 @@ pre > code {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h1 id="closure">Closure</h1>
 <pre><code>for (var i = 0; i &lt; 5; i++) {
     button.onclick = function() {
@@ -706,7 +709,7 @@ called.  </li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-17">
     <section class="slide-content"><h1 id="closure">Closure</h1>
 <pre><code>var createHandler = function(i) {
     alert(&quot;I&#39;m button #&quot; + i);
@@ -718,7 +721,7 @@ for (var i = 0; i &lt; 5; i++) {
 <p>Why does this make a difference?</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h1 id="example-exploring-prototype">Example: exploring prototype</h1>
 <p>Let&#39;s look at how to add a method to <code>Array</code></p>
 <ul>
@@ -729,7 +732,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h1 id="replacing-methods">Replacing methods</h1>
 <ul>
 <li>polyfills (add mising functionality)</li>
@@ -738,7 +741,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-19">
+  <div class="slide hidden  " id="slide-20">
     <section class="slide-content"><h1 id="example-addeventlistener">Example: addEventListener</h1>
 <p>instrument a single instance, class, or everythhing</p>
 <p>pattern:</p>
@@ -752,11 +755,11 @@ for (var i = 0; i &lt; 5; i++) {
 };</code></pre>
 </section>
   </div>
-  <div class="slide hidden  title" id="slide-20">
+  <div class="slide hidden  title" id="slide-21">
     <section class="slide-content"><h1 id="tooling">Tooling</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h1 id="tools">Tools</h1>
 <ul>
 <li>IDE/Editor: WebStorm, Sublime, Atom, emacs, vim, etc.</li>
@@ -767,7 +770,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-22">
+  <div class="slide hidden  " id="slide-23">
     <section class="slide-content"><h1 id="ide-editor">IDE/Editor</h1>
 <ul>
 <li>easy navigation</li>
@@ -778,7 +781,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-23">
+  <div class="slide hidden" id="slide-24">
     <section class="slide-content"><h1 id="protect-yourself">Protect Yourself</h1>
 <ul>
 <li>lint: jshint (automate it)</li>
@@ -788,7 +791,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-24">
+  <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h1 id="debugging">Debugging</h1>
 <ul>
 <li>breakpoints</li>
@@ -800,11 +803,11 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  title" id="slide-25">
+  <div class="slide hidden  title" id="slide-26">
     <section class="slide-content"><h1 id="interacting-with-the-community">Interacting with the Community</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-26">
+  <div class="slide hidden" id="slide-27">
     <section class="slide-content"><h1 id="things-to-do">Things to do</h1>
 <ul>
 <li>report bugs</li>
@@ -816,7 +819,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-27">
+  <div class="slide hidden" id="slide-28">
     <section class="slide-content"><h1 id="etiquette">Etiquette</h1>
 <ul>
 <li>assume good faith</li>
@@ -826,7 +829,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-28">
+  <div class="slide hidden" id="slide-29">
     <section class="slide-content"><h1 id="finding-a-project">Finding a Project</h1>
 <ul>
 <li><a href="https://github.com/gre/glsl.js/pull/12">https://github.com/gre/glsl.js/pull/12</a></li>
@@ -835,7 +838,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-29">
+  <div class="slide hidden" id="slide-30">
     <section class="slide-content"><h1 id="starting-a-project">Starting a Project</h1>
 <ul>
 <li><a href="http://jenniferdewalt.com/">http://jenniferdewalt.com/</a></li>
@@ -848,7 +851,7 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-30">
+  <div class="slide hidden" id="slide-31">
     <section class="slide-content"><h1 id="finishing-a-project">Finishing a Project</h1>
 <ul>
 <li>add documentation and example code to README.md</li>
@@ -857,11 +860,11 @@ for (var i = 0; i &lt; 5; i++) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  title" id="slide-31">
+  <div class="slide hidden  title" id="slide-32">
     <section class="slide-content"><h1 id="apis-and-libraries">APIs and Libraries</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-32">
+  <div class="slide hidden" id="slide-33">
     <section class="slide-content"><h1 id="browser-apis">Browser APIs</h1>
 <ul>
 <li><a href="http://diveintohtml5.info/">dive into HTML5</a></li>
@@ -873,7 +876,7 @@ getUserMedia, TouchEvents, DeviceOrientation, etc.</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-33">
+  <div class="slide hidden" id="slide-34">
     <section class="slide-content"><h1 id="using-the-new-and-shiny">Using the new and shiny</h1>
 <ul>
 <li><a href="http://caniuse.com/">caniuse.com</a></li>
@@ -881,7 +884,7 @@ getUserMedia, TouchEvents, DeviceOrientation, etc.</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-34">
+  <div class="slide hidden" id="slide-35">
     <section class="slide-content"><h1 id="libraries">Libraries</h1>
 <ul>
 <li>Web Sockets -&gt; <a href="http://socket.io/">socket.io</a></li>
@@ -891,15 +894,15 @@ getUserMedia, TouchEvents, DeviceOrientation, etc.</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  title" id="slide-35">
+  <div class="slide hidden  title" id="slide-36">
     <section class="slide-content"><h1 id="final-words-of-wisdom">Final Words of Wisdom</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-36">
+  <div class="slide hidden" id="slide-37">
     <section class="slide-content"><h1 id="javascript-masterclass">JavaScript Masterclass</h1>
 <iframe width="853" height="480" src="https://www.youtube.com/embed/v0TFmdO4ZP0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></section>
   </div>
-  <div class="slide hidden  title" id="slide-37">
+  <div class="slide hidden  title" id="slide-38">
     <section class="slide-content"><h1 id="questions">Questions</h1>
 </section>
   </div>
