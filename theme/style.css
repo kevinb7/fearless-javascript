@@ -151,3 +151,7 @@ ul {
   margin: 20px auto;
   display: table-cell;
 }
+
+pre > code {
+  font-size: 1.5em;
+}

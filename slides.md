@@ -22,8 +22,14 @@ logo: theme/logo.png
 
 - JavaScript
 - Tools
-- Browser APIs
 - Interacting with the Community
+- APIs & libraries
+- Final Words of Wisdom
+- Questions
+
+-- title
+
+# JavaScript
 
 --
 
@@ -32,18 +38,15 @@ logo: theme/logo.png
 - Language
   - keywords: `if`, `for`, `var`, `function`, etc; operators: `+`, `&&`, `===`, `!==`, etc.
 - Standard Library
-  - String, Array, Function, RegExp, Date, Object, Math, setTimeout, clearTimeout, setInterval, clearInterval
-- DOM: document, document.body, elements, addEventListener, etc.
-- 3rd party libraries:
-  - jQuery (DOM manipulation, AJAX, Promises)
-  - Backbone, Angular, Ember, React, etc.
-  - other
+  - String, Array, Function, RegExp, Date, Object, Math, setTimeout, etc.
+- DOM
+- 3rd party libraries
 
 --
 
 # Learn the Language First
 
-- this
+- `this`
 - closure
 - pass-by-reference vs. pass-by-value
 - prototype chain
@@ -55,7 +58,7 @@ logo: theme/logo.png
 
 # Lots of Resources
 
-- Crockford's "Good Parts" talks
+- [JavaScript the Good Parts](https://www.youtube.com/watch?v=hQVTIJBZook) (Crockford 2009)
 - [JavaScript Garden](https://bonsaiden.github.io/JavaScript-Garden/)
 - [JavaScript on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [JavaScript the Weird Parts](https://www.youtube.com/watch?v=MihuqHhnFVo)
@@ -65,16 +68,14 @@ logo: theme/logo.png
 # How to make it stick
 
 - Don't just read it, try it out as you read it
-  - JavaScript Koans
-- If you forget it, try to remember it by creating an example to verify it.
-  - use the REPL
+- If you forget it, try writing some code to verify it
 - write code
 - read other people's code
 - modify other people's code
 
 --
 
-# REPL
+# REPL uses
 
 - validate understanding
 - explore objects
@@ -82,9 +83,8 @@ logo: theme/logo.png
 
 --
 
-# Verifying behaviour in a REPL
+# REPL tips
 
-- create a minimal example and execute
 - be careful, browser dev tools will eat "var a = ...", use "a = ..."
 - hit shift-enter to type multiple lines of code
 
@@ -159,18 +159,20 @@ Let's look at how to add a method to `Array`
 
 - Object.getPrototype
 - Object.getOwnPropertyDescriptor
-- Object.setPrototype
+- Object.defineProperty
+- [ECMAScript 5 Objects and Properties](http://ejohn.org/blog/ecmascript-5-objects-and-properties/)
 
 --
 
 # Replacing methods
 
 - polyfills (add mising functionality)
-- instrument
+- instrumenting
+- mocking/stubbing when testing
 
 -- 
 
-# Example (addEventListener)
+# Example: addEventListener
 
 instrument a single instance, class, or everythhing
 
@@ -178,9 +180,6 @@ pattern:
 - store the original implementation
 - create our own method that calls the original and does some other worker
 
---
-
-# Example (addEventListener)
 
     Element.prototype.addEventListener = function(type, handler, capture) {
         console.log("adding event '" + type + "' to: %o", this);
@@ -189,7 +188,7 @@ pattern:
  
 -- title
 
-# Tools
+# Tooling
 
 --
 
@@ -209,6 +208,7 @@ pattern:
 - collapsable regions -> structure
 - refactorings
 - multiple cursors
+- keyboard shortcuts
 
 --
 
@@ -226,12 +226,17 @@ pattern:
 - breakpoints
 - exceptions
 - conditional breakpoints
-- https://developer.chrome.com/devtools
-- http://discover-devtools.codeschool.com/
+- [https://developer.chrome.com/devtools](https://developer.chrome.com/devtools)
+- [http://discover-devtools.codeschool.com/](http://discover-devtools.codeschool.com/)
+- videos from previous Google I/O on devtools
+
+-- title
+
+# Interacting with the Community
 
 --
 
-# Interacting with the Community (github)
+# Things to do
 
 - report bugs
 - verify bugs
@@ -242,7 +247,7 @@ pattern:
 
 --
 
-# Interacting with the Community
+# Etiquette
 
 - assume good faith
 - observe proper netiquette
@@ -275,22 +280,27 @@ pattern:
 - put a live demo on gh-pages (free static hosting)
 - write a "Show HN" post
 
+-- title
+
+# APIs and Libraries
+
 --
 
 # Browser APIs
 
-- dive into HTML5
-- http://html5please.com/
+- [dive into HTML5](http://diveintohtml5.info/)
+- [http://html5please.com/](http://html5please.com/)
 - Blobs, BlobURLs, native drag and drop, native notifications, dialog element,
   web workers, WebGL, SVG, Canvas, localStorage, audio/video elements, 
-  getUserMedia, Touch, 
+  getUserMedia, TouchEvents, DeviceOrientation, etc.
+- [MDN](https://developer.mozilla.org/en-US/)
 
 --
 
 # Using the new and shiny
 
-- caniuse.com
-- find polyfills
+- [caniuse.com](http://caniuse.com/)
+- use polyfills when necessary
 
 --
 
@@ -301,28 +311,16 @@ pattern:
 - WebGL -> [THREE.js](http://threejs.org/)
 - Web Components -> [Polymer](https://www.polymer-project.org/)
 
--- sponsors
+-- title
 
-# Our Sponsors
-
-![Assembly](img/sponsors/assembly_logo.png)
-
-![Village Brewery](img/sponsors/village_brewery_logo.png)
-
-![Startup Calgary](img/sponsors/startup_calgary_logo.png)
-
-![PetroFeed](img/sponsors/petrofeed_logo.png)
+# Final Words of Wisdom
 
 --
 
-# Last Month
+# JavaScript Masterclass
 
-* Something awesome
-* More awesomeness
+<iframe width="853" height="480" src="https://www.youtube.com/embed/v0TFmdO4ZP0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
---
+-- title
 
-# Next Month
-
-* Something awesome
-* More awesomeness
+# Questions
