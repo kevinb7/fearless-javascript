@@ -46,6 +46,16 @@ logo: theme/logo.png
 
 # Learn the Language First
 
+Why?
+- solid foundation to build on
+- easier to understand other code you're using
+- easier to find bugs and fix them
+
+--
+
+# Learn the Language First
+
+What?
 - `this`
 - closure (lambdas)
 - pass-by-reference vs. pass-by-value
