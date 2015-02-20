@@ -157,7 +157,9 @@ called.
 # Closure
 
     var createHandler = function(i) {
-        alert("I'm button #" + i);
+        return function () {
+            alert("I'm button #" + i);
+        };
     };
     
     for (var i = 0; i < 5; i++) {
